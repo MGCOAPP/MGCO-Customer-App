@@ -1,30 +1,27 @@
 import React from 'react';
 import { SectionTitle, Card, CtaButton } from '../components/UI';
+import Icon from '../components/Icons';
 
 const FLEET_VEHICLES = [
   {
-    icon: '🚐',
     name: '2023 Ford Transit #1',
     detail: 'Full Wrap · Installed Jan 2024 · 15 months old',
     status: 'ACTIVE',
     statusStyle: { background: 'var(--mgc-green-bg)', color: 'var(--mgc-green)', border: '1px solid var(--mgc-green-border)' },
   },
   {
-    icon: '🚐',
     name: '2023 Ford Transit #2',
     detail: 'Full Wrap · In Production Now',
     status: 'IN PROD',
     statusStyle: { background: 'var(--mgc-coral-bg)', color: 'var(--mgc-coral)', border: '1px solid var(--mgc-coral-dark)' },
   },
   {
-    icon: '🚚',
     name: '2021 Chevy Express',
     detail: 'Partial Wrap · Installed Aug 2021 · 3+ years',
     status: 'REFRESH DUE',
     statusStyle: { background: 'var(--mgc-coral-bg)', color: 'var(--mgc-coral)', border: '1px solid var(--mgc-coral-dark)' },
   },
   {
-    icon: '🚙',
     name: '2022 Ram ProMaster',
     detail: 'Decals Only · Installed Mar 2023',
     status: 'ACTIVE',
@@ -37,12 +34,11 @@ const BRAND_FILES = ['Logo-Primary.ai', 'Brand-Guide.pdf', 'Colors.png'];
 export default function FleetScreen() {
   return (
     <div>
-      {/* Fleet Stats */}
       <div style={{ padding: '12px 20px 4px', display: 'flex', gap: '8px' }}>
         {[
-          { value: '4', label: 'Vehicles', color: 'var(--mgc-coral)' },
+          { value: '4', label: 'Vehicles',     color: 'var(--mgc-coral)' },
           { value: '2', label: 'Active Wraps', color: 'var(--mgc-tan)' },
-          { value: '1', label: 'Refresh Due', color: 'var(--mgc-green)' },
+          { value: '1', label: 'Refresh Due',  color: 'var(--mgc-green)' },
         ].map(({ value, label, color }) => (
           <div key={label} style={{
             flex: 1,
@@ -59,7 +55,7 @@ export default function FleetScreen() {
       </div>
 
       <SectionTitle>Fleet Vehicles</SectionTitle>
-      {FLEET_VEHICLES.map(({ icon, name, detail, status, statusStyle }) => (
+      {FLEET_VEHICLES.map(({ name, detail, status, statusStyle }) => (
         <div
           key={name}
           style={{
@@ -82,10 +78,10 @@ export default function FleetScreen() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '22px',
+            color: 'var(--mgc-coral)',
             flexShrink: 0,
           }}>
-            {icon}
+            <Icon name="vehicle" size={22} />
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: '14px', fontWeight: '500', color: 'var(--mgc-white)' }}>{name}</div>
@@ -104,7 +100,9 @@ export default function FleetScreen() {
       <SectionTitle>Brand Assets</SectionTitle>
       <Card>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-          <span style={{ fontSize: '20px' }}>📁</span>
+          <div style={{ color: 'var(--mgc-tan)' }}>
+            <Icon name="folder" size={20} />
+          </div>
           <div style={{ fontSize: '14px', fontWeight: '500', color: 'var(--mgc-white)' }}>Stored Brand Files</div>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>

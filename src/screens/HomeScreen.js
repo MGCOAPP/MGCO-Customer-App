@@ -1,15 +1,16 @@
 import React from 'react';
 import { SectionTitle, Card, ProgressBar, OrderSteps, StatusBadge } from '../components/UI';
+import Icon from '../components/Icons';
 
 const ORDER_STEPS = ['Ordered', 'Design', 'Print', 'Install', 'Ready'];
 
 const quickActions = [
-  { id: 'quote',   icon: '💰', label: 'Get a Quote',    sub: 'Upload your vehicle' },
-  { id: 'track',   icon: '📍', label: 'Track Order',    sub: 'In production' },
-  { id: 'gallery', icon: '🖼️', label: 'Wrap Gallery',   sub: 'Browse designs' },
-  { id: 'appt',    icon: '📅', label: 'Schedule',       sub: 'Book drop-off' },
-  { id: 'fleet',   icon: '🚛', label: 'My Fleet',       sub: '4 vehicles' },
-  { id: 'care',    icon: '✨', label: 'Wrap Care',      sub: 'Protect your wrap' },
+  { id: 'quote',   icon: 'quote',    label: 'Get a Quote',  sub: 'Upload your vehicle' },
+  { id: 'track',   icon: 'track',    label: 'Track Order',  sub: 'In production' },
+  { id: 'gallery', icon: 'gallery',  label: 'Wrap Gallery', sub: 'Browse designs' },
+  { id: 'appt',    icon: 'schedule', label: 'Schedule',     sub: 'Book drop-off' },
+  { id: 'fleet',   icon: 'fleet',    label: 'My Fleet',     sub: '4 vehicles' },
+  { id: 'care',    icon: 'care',     label: 'Wrap Care',    sub: 'Protect your wrap' },
 ];
 
 export default function HomeScreen({ navigate }) {
@@ -70,7 +71,9 @@ export default function HomeScreen({ navigate }) {
               cursor: 'pointer',
             }}
           >
-            <div style={{ fontSize: '24px', marginBottom: '8px' }}>{icon}</div>
+            <div style={{ color: 'var(--mgc-coral)', marginBottom: '10px' }}>
+              <Icon name={icon} size={22} />
+            </div>
             <div style={{ fontSize: '13px', fontWeight: '500', color: 'var(--mgc-white)' }}>{label}</div>
             <div style={{ fontSize: '11px', color: '#666', marginTop: '2px' }}>{sub}</div>
           </div>

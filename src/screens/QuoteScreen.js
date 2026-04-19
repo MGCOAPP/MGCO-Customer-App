@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { FormInput, FormLabel, CtaButton } from '../components/UI';
+import Icon from '../components/Icons';
 
 const WRAP_TYPES = [
-  { id: 'full',    icon: '🚗', name: 'Full Wrap',     price: 'From $2,500' },
-  { id: 'partial', icon: '✂️', name: 'Partial',       price: 'From $800' },
-  { id: 'color',   icon: '🎨', name: 'Color Change',  price: 'From $3,200' },
-  { id: 'decals',  icon: '📋', name: 'Decals',        price: 'From $150' },
+  { id: 'full',    icon: 'fullWrap',    name: 'Full Wrap',    price: 'From $2,500' },
+  { id: 'partial', icon: 'partialWrap', name: 'Partial',      price: 'From $800' },
+  { id: 'color',   icon: 'colorChange', name: 'Color Change', price: 'From $3,200' },
+  { id: 'decals',  icon: 'decal',       name: 'Decals',       price: 'From $250' },
 ];
 
 const section = { padding: '12px 20px' };
@@ -41,12 +42,14 @@ export default function QuoteScreen() {
                 background: selectedWrap === id ? '#2a1810' : 'var(--mgc-black-card)',
                 border: `1px solid ${selectedWrap === id ? 'var(--mgc-coral)' : 'var(--mgc-black-border)'}`,
                 borderRadius: '10px',
-                padding: '12px 10px',
+                padding: '14px 10px',
                 textAlign: 'center',
                 cursor: 'pointer',
               }}
             >
-              <div style={{ fontSize: '20px', marginBottom: '4px' }}>{icon}</div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px', color: selectedWrap === id ? 'var(--mgc-coral)' : '#555' }}>
+                <Icon name={icon} size={22} />
+              </div>
               <div style={{ fontSize: '12px', color: 'var(--mgc-white)', fontWeight: '500' }}>{name}</div>
               <div style={{ fontSize: '10px', color: '#666', marginTop: '2px' }}>{price}</div>
             </div>
@@ -64,7 +67,9 @@ export default function QuoteScreen() {
           textAlign: 'center',
           cursor: 'pointer',
         }}>
-          <div style={{ fontSize: '28px', marginBottom: '8px' }}>📷</div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px', color: '#555' }}>
+            <Icon name="camera" size={28} />
+          </div>
           <div style={{ fontSize: '13px', color: 'var(--mgc-tan)' }}>Tap to upload photos</div>
           <div style={{ fontSize: '11px', color: '#555', marginTop: '4px' }}>
             Driver side · Passenger side · Front · Rear

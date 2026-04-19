@@ -1,14 +1,15 @@
 import React from 'react';
 import { Card } from '../components/UI';
+import Icon from '../components/Icons';
 
 const MENU_ITEMS = [
-  { icon: '📋', label: 'Order History' },
-  { icon: '💳', label: 'Invoices & Payments' },
-  { icon: '🔔', label: 'Notifications' },
-  { icon: '🏢', label: 'Company Details' },
-  { icon: '🔑', label: 'Change Password' },
-  { icon: '⭐', label: 'Referral Program' },
-  { icon: '📞', label: 'Contact Support' },
+  { icon: 'list',       label: 'Order History' },
+  { icon: 'creditCard', label: 'Invoices & Payments' },
+  { icon: 'bell',       label: 'Notifications' },
+  { icon: 'building',   label: 'Company Details' },
+  { icon: 'lock',       label: 'Change Password' },
+  { icon: 'users',      label: 'Referral Program' },
+  { icon: 'phone',      label: 'Contact Support' },
 ];
 
 export default function AccountScreen() {
@@ -43,15 +44,17 @@ export default function AccountScreen() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
+                gap: '14px',
                 padding: '14px 0',
                 borderBottom: '1px solid #1f1f1f',
                 cursor: 'pointer',
               }}
             >
-              <span style={{ fontSize: '18px', width: '28px', textAlign: 'center' }}>{icon}</span>
+              <div style={{ color: '#555', flexShrink: 0 }}>
+                <Icon name={icon} size={17} />
+              </div>
               <span style={{ fontSize: '14px', color: 'var(--mgc-white)', flex: 1 }}>{label}</span>
-              <span style={{ color: '#444', fontSize: '16px' }}>›</span>
+              <span style={{ color: '#333', fontSize: '16px' }}>›</span>
             </div>
           ))}
         </div>

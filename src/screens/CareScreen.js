@@ -1,30 +1,31 @@
 import React from 'react';
 import { Card, CtaButton } from '../components/UI';
+import Icon from '../components/Icons';
 
 const CARE_ITEMS = [
   {
-    icon: '🚿',
+    icon: 'droplet',
     title: 'Washing Your Wrap',
     body: 'Wait at least 2 weeks after install before washing. Use touchless car washes or hand wash with a pH-neutral soap. Rinse with low-pressure water.',
     do: 'Hand Wash',
     dont: 'Pressure Wash',
   },
   {
-    icon: '☀️',
+    icon: 'sun',
     title: 'Sun & Heat Exposure',
     body: 'Park in shade or a garage when possible. Prolonged UV exposure can cause fading. Use a UV-protectant spray designed for vinyl wraps.',
     do: 'Use UV Spray',
     dont: 'Direct Sun Storage',
   },
   {
-    icon: '🧴',
+    icon: 'flask',
     title: 'Cleaning Products',
     body: 'Only use products specifically designed for vinyl wraps. Avoid solvent-based cleaners, wax with PTFE, and any abrasive compounds.',
     do: 'Vinyl-Safe Cleaner',
     dont: 'Wax / Solvents',
   },
   {
-    icon: '🌡️',
+    icon: 'snowflake',
     title: 'Temperature & Winter',
     body: 'In winter, avoid scraping ice directly on the wrap. Use a soft snow brush. Automatic washes with brushes can scratch the surface.',
     do: 'Soft Snow Brush',
@@ -38,7 +39,9 @@ export default function CareScreen() {
       {CARE_ITEMS.map(({ icon, title, body, do: doTip, dont }) => (
         <Card key={title}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-            <span style={{ fontSize: '22px' }}>{icon}</span>
+            <div style={{ color: 'var(--mgc-coral)' }}>
+              <Icon name={icon} size={20} />
+            </div>
             <div style={{ fontSize: '14px', fontWeight: '500', color: 'var(--mgc-white)' }}>{title}</div>
           </div>
           <div style={{ fontSize: '13px', color: '#888', lineHeight: 1.6 }}>{body}</div>
@@ -55,7 +58,9 @@ export default function CareScreen() {
 
       <Card>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-          <span style={{ fontSize: '22px' }}>📞</span>
+          <div style={{ color: 'var(--mgc-coral)' }}>
+            <Icon name="phone" size={20} />
+          </div>
           <div style={{ fontSize: '14px', fontWeight: '500', color: 'var(--mgc-white)' }}>Notice an Issue?</div>
         </div>
         <div style={{ fontSize: '13px', color: '#888', lineHeight: 1.6, marginBottom: '4px' }}>

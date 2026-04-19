@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { SectionTitle, CtaButton } from '../components/UI';
+import Icon from '../components/Icons';
 
 const APPT_TYPES = [
-  { id: 'dropoff', icon: '🔽', name: 'Drop-Off' },
-  { id: 'pickup',  icon: '🔼', name: 'Pick-Up' },
-  { id: 'consult', icon: '👀', name: 'Consultation' },
-  { id: 'tour',    icon: '🏭', name: 'Shop Tour' },
+  { id: 'dropoff', icon: 'arrowDown', name: 'Drop-Off' },
+  { id: 'pickup',  icon: 'arrowUp',   name: 'Pick-Up' },
+  { id: 'consult', icon: 'message',   name: 'Consultation' },
+  { id: 'tour',    icon: 'eye',       name: 'Shop Tour' },
 ];
 
 const DATES = [
@@ -51,12 +52,14 @@ export default function AppointmentScreen() {
                 background: apptType === id ? '#2a1810' : 'var(--mgc-black-card)',
                 border: `1px solid ${apptType === id ? 'var(--mgc-coral)' : 'var(--mgc-black-border)'}`,
                 borderRadius: '10px',
-                padding: '12px 10px',
+                padding: '14px 10px',
                 textAlign: 'center',
                 cursor: 'pointer',
               }}
             >
-              <div style={{ fontSize: '20px', marginBottom: '4px' }}>{icon}</div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px', color: apptType === id ? 'var(--mgc-coral)' : '#555' }}>
+                <Icon name={icon} size={20} />
+              </div>
               <div style={{ fontSize: '12px', color: 'var(--mgc-white)', fontWeight: '500' }}>{name}</div>
             </div>
           ))}
@@ -94,7 +97,7 @@ export default function AppointmentScreen() {
             key={label}
             onClick={() => !booked && setSelectedTime(label)}
             style={{
-              background: 'var(--mgc-black-card)',
+              background: selectedTime === label && !booked ? '#2a1810' : 'var(--mgc-black-card)',
               border: `1px solid ${selectedTime === label && !booked ? 'var(--mgc-coral)' : 'var(--mgc-black-border)'}`,
               borderRadius: '10px',
               padding: '12px',
@@ -104,7 +107,6 @@ export default function AppointmentScreen() {
               color: selectedTime === label && !booked ? 'var(--mgc-coral)' : booked ? '#444' : 'var(--mgc-white)',
               fontWeight: selectedTime === label && !booked ? '600' : '400',
               opacity: booked ? 0.35 : 1,
-              background: selectedTime === label && !booked ? '#2a1810' : 'var(--mgc-black-card)',
             }}
           >
             {booked ? `${label} ✗` : label}

@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icons';
 
 const styles = {
   bar: {
@@ -67,11 +68,11 @@ export default function TopBar({ title, sub, isHome, notifCount, onBack, isDeskt
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {!isDesktop && !isHome && (
           <button style={styles.rightBtn} onClick={onBack} aria-label="Back">
-            ✕
+            <Icon name="arrowUp" size={16} color="#aaa" strokeWidth={2} />
           </button>
         )}
         <button style={styles.rightBtn} aria-label="Notifications">
-          🔔
+          <Icon name="bell" size={17} color="#aaa" />
           {notifCount > 0 && <div style={styles.notifDot} />}
         </button>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TopBar from './components/TopBar';
 import BottomNav from './components/BottomNav';
 import Sidebar from './components/Sidebar';
+import HeroScreen from './screens/HeroScreen';
 import HomeScreen from './screens/HomeScreen';
 import GalleryScreen from './screens/GalleryScreen';
 import QuoteScreen from './screens/QuoteScreen';
@@ -44,9 +45,14 @@ function useIsDesktop() {
 }
 
 export default function App() {
+  const [showHero, setShowHero] = useState(true);
   const [currentScreen, setCurrentScreen] = useState('home');
   const [notifCount] = useState(2);
   const isDesktop = useIsDesktop();
+
+  if (showHero) {
+    return <HeroScreen onEnter={() => setShowHero(false)} />;
+  }
 
   const ActiveScreen = SCREENS[currentScreen] || HomeScreen;
   const screenInfo = SCREEN_TITLES[currentScreen] || SCREEN_TITLES.home;
