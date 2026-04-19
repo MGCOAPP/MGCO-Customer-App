@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+  --mgc-black: #1a1a1a;
+  --mgc-black-deep: #111111;
+  --mgc-black-card: #1a1a1a;
+  --mgc-black-border: #2a2a2a;
+  --mgc-coral: #D85A30;
+  --mgc-coral-light: #F0997B;
+  --mgc-coral-dark: #993C1D;
+  --mgc-coral-bg: #2a1810;
+  --mgc-tan: #C8B89A;
+  --mgc-tan-light: #EDE3D6;
+  --mgc-tan-dark: #9A8A72;
+  --mgc-white: #F9F6F2;
+  --mgc-green: #6fcf5a;
+  --mgc-green-bg: #162010;
+  --mgc-green-border: #2a4020;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+  background: #0a0a0a;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Desktop layout variables */
+:root {
+  --sidebar-width: 240px;
+  --content-max: 860px;
+}
+
+/* Desktop sidebar nav */
+.desktop-sidebar {
+  display: none;
+}
+
+.desktop-layout {
+  display: flex;
+  width: 100%;
+  max-width: var(--content-max);
+  min-height: 100dvh;
+}
+
+/* Responsive breakpoints */
+@media (min-width: 768px) {
+  body {
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .mobile-only {
+    display: none !important;
+  }
+
+  .desktop-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--sidebar-width);
+    background: #111;
+    border-right: 1px solid var(--mgc-black-border);
+    min-height: 100dvh;
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
+  }
+
+  .main-content-area {
+    flex: 1;
+    min-width: 0;
+    padding-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* Inputs */
+input, textarea, select {
+  font-family: var(--font-body);
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
