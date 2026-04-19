@@ -35,6 +35,7 @@ export default function Sidebar({ current, navigate }) {
             <button
               key={id}
               onClick={() => navigate(id)}
+              className="sidebar-nav-btn"
               style={{
                 width: '100%',
                 display: 'flex',

@@ -25,7 +25,7 @@ export default function HomeScreen({ navigate }) {
           Welcome back
         </div>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: '38px', color: 'var(--mgc-white)', letterSpacing: '1px', lineHeight: 1 }}>
-          LARGER THAN <span style={{ color: 'var(--mgc-coral)' }}>LIFE</span><br />GRAPHICS
+          BUILT ON <span style={{ color: 'var(--mgc-coral)' }}>CRAFT.</span><br />BACKED BY 3M.
         </div>
         <div style={{ fontSize: '13px', color: 'var(--mgc-tan)', marginTop: '6px' }}>
           1320 N Bristol St, Sun Prairie, WI
