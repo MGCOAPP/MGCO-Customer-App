@@ -14,7 +14,7 @@ const NAV_ITEMS = [
 export default function Sidebar({ current, navigate }) {
   return (
     <div style={{
-      width: '220px',
+      width: '260px',
       flexShrink: 0,
       background: '#0f0f0f',
       borderRight: '1px solid #2a2a2a',

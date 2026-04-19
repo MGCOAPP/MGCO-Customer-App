@@ -46,7 +46,7 @@ export default function GalleryScreen() {
 
       <SectionTitle>Featured Work</SectionTitle>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', padding: '4px 20px 20px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', padding: '4px 20px 20px' }}>
         {GALLERY_ITEMS.map(({ label, tag, icon, bg }, i) => (
           <div
             key={i}

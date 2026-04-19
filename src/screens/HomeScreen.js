@@ -57,7 +57,7 @@ export default function HomeScreen({ navigate }) {
 
       {/* Quick Actions */}
       <SectionTitle>Quick Actions</SectionTitle>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', padding: '4px 20px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '10px', padding: '4px 20px' }}>
         {quickActions.map(({ id, icon, label, sub }) => (
           <div
             key={id}
