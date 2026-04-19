@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { SectionTitle, CtaButton } from '../components/UI';
 
 const APPT_TYPES = [
-  { id: 'dropoff', icon: '🔽', name: 'Drop-Off' },
-  { id: 'pickup',  icon: '🔼', name: 'Pick-Up' },
-  { id: 'consult', icon: '👀', name: 'Consultation' },
-  { id: 'tour',    icon: '🏭', name: 'Shop Tour' },
+  { id: 'dropoff', name: 'Drop-Off' },
+  { id: 'pickup',  name: 'Pick-Up' },
+  { id: 'consult', name: 'Consultation' },
+  { id: 'tour',    name: 'Shop Tour' },
 ];
 
 const DATES = [
@@ -39,25 +39,24 @@ export default function AppointmentScreen() {
   return (
     <div>
       <div style={{ padding: '12px 20px' }}>
-        <div style={{ fontSize: '11px', color: 'var(--mgc-tan-dark)', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '8px' }}>
+        <div style={{ fontSize: '9px', color: 'var(--mgc-tan-dark)', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '10px' }}>
           Appointment Type
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-          {APPT_TYPES.map(({ id, icon, name }) => (
+          {APPT_TYPES.map(({ id, name }) => (
             <div
               key={id}
               onClick={() => setApptType(id)}
               style={{
-                background: apptType === id ? '#2a1810' : 'var(--mgc-black-card)',
-                border: `1px solid ${apptType === id ? 'var(--mgc-coral)' : 'var(--mgc-black-border)'}`,
-                borderRadius: '10px',
-                padding: '12px 10px',
-                textAlign: 'center',
+                background: apptType === id ? '#2a1810' : '#1a1a1a',
+                border: `1px solid ${apptType === id ? 'var(--mgc-coral)' : '#1e1e1e'}`,
+                borderLeft: `2px solid ${apptType === id ? 'var(--mgc-coral)' : 'transparent'}`,
+                borderRadius: '4px',
+                padding: '14px 12px',
                 cursor: 'pointer',
               }}
             >
-              <div style={{ fontSize: '20px', marginBottom: '4px' }}>{icon}</div>
-              <div style={{ fontSize: '12px', color: 'var(--mgc-white)', fontWeight: '500' }}>{name}</div>
+              <div style={{ fontSize: '13px', color: apptType === id ? 'var(--mgc-white)' : '#C8B89A', fontWeight: '500' }}>{name}</div>
             </div>
           ))}
         </div>
@@ -72,16 +71,16 @@ export default function AppointmentScreen() {
             style={{
               flexShrink: 0,
               width: '52px',
-              background: selectedDate === num ? 'var(--mgc-coral)' : 'var(--mgc-black-card)',
-              border: `1px solid ${selectedDate === num ? 'var(--mgc-coral)' : 'var(--mgc-black-border)'}`,
-              borderRadius: '10px',
+              background: selectedDate === num ? 'var(--mgc-coral)' : '#1a1a1a',
+              border: `1px solid ${selectedDate === num ? 'var(--mgc-coral)' : '#1e1e1e'}`,
+              borderRadius: '4px',
               padding: '10px 6px',
               textAlign: 'center',
               cursor: disabled ? 'not-allowed' : 'pointer',
               opacity: disabled ? 0.4 : 1,
             }}
           >
-            <div style={{ fontSize: '10px', color: selectedDate === num ? 'rgba(255,255,255,0.7)' : '#666', textTransform: 'uppercase', letterSpacing: '1px' }}>{dow}</div>
+            <div style={{ fontSize: '9px', color: selectedDate === num ? 'rgba(255,255,255,0.7)' : '#555', textTransform: 'uppercase', letterSpacing: '1px' }}>{dow}</div>
             <div style={{ fontSize: '18px', fontWeight: '600', color: 'var(--mgc-white)', marginTop: '2px' }}>{num}</div>
           </div>
         ))}
@@ -89,27 +88,29 @@ export default function AppointmentScreen() {
 
       <SectionTitle>Available Times — Tuesday Apr 22</SectionTitle>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', padding: '4px 20px' }}>
-        {TIMES.map(({ label, booked }) => (
-          <div
-            key={label}
-            onClick={() => !booked && setSelectedTime(label)}
-            style={{
-              background: 'var(--mgc-black-card)',
-              border: `1px solid ${selectedTime === label && !booked ? 'var(--mgc-coral)' : 'var(--mgc-black-border)'}`,
-              borderRadius: '10px',
-              padding: '12px',
-              textAlign: 'center',
-              cursor: booked ? 'not-allowed' : 'pointer',
-              fontSize: '13px',
-              color: selectedTime === label && !booked ? 'var(--mgc-coral)' : booked ? '#444' : 'var(--mgc-white)',
-              fontWeight: selectedTime === label && !booked ? '600' : '400',
-              opacity: booked ? 0.35 : 1,
-              background: selectedTime === label && !booked ? '#2a1810' : 'var(--mgc-black-card)',
-            }}
-          >
-            {booked ? `${label} ✗` : label}
-          </div>
-        ))}
+        {TIMES.map(({ label, booked }) => {
+          const selected = selectedTime === label && !booked;
+          return (
+            <div
+              key={label}
+              onClick={() => !booked && setSelectedTime(label)}
+              style={{
+                background: selected ? '#2a1810' : '#1a1a1a',
+                border: `1px solid ${selected ? 'var(--mgc-coral)' : '#1e1e1e'}`,
+                borderRadius: '4px',
+                padding: '12px',
+                textAlign: 'center',
+                cursor: booked ? 'not-allowed' : 'pointer',
+                fontSize: '13px',
+                color: selected ? 'var(--mgc-coral)' : booked ? '#333' : 'var(--mgc-white)',
+                fontWeight: selected ? '600' : '400',
+                opacity: booked ? 0.35 : 1,
+              }}
+            >
+              {booked ? `${label} —` : label}
+            </div>
+          );
+        })}
       </div>
 
       <div style={{ padding: '12px 20px' }}>
@@ -119,9 +120,9 @@ export default function AppointmentScreen() {
           onChange={e => setVehicle(e.target.value)}
           style={{
             width: '100%',
-            background: 'var(--mgc-black-card)',
-            border: '1px solid var(--mgc-black-border)',
-            borderRadius: '10px',
+            background: '#1a1a1a',
+            border: '1px solid #1e1e1e',
+            borderRadius: '4px',
             padding: '12px 14px',
             fontSize: '14px',
             color: 'var(--mgc-white)',
@@ -136,9 +137,9 @@ export default function AppointmentScreen() {
           onChange={e => setNotes(e.target.value)}
           style={{
             width: '100%',
-            background: 'var(--mgc-black-card)',
-            border: '1px solid var(--mgc-black-border)',
-            borderRadius: '10px',
+            background: '#1a1a1a',
+            border: '1px solid #1e1e1e',
+            borderRadius: '4px',
             padding: '12px 14px',
             fontSize: '14px',
             color: 'var(--mgc-white)',

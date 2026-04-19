@@ -38,7 +38,9 @@ export default function TrackScreen() {
         <Card key={order.id} style={{ opacity: order.faded ? 0.6 : 1 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
             <div>
-              <div style={{ fontSize: '12px', color: 'var(--mgc-tan)' }}>{order.id} · {order.label}</div>
+              <div style={{ fontSize: '9px', color: '#3a3a3a', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '4px' }}>
+                {order.id} · {order.label}
+              </div>
               <div style={{ fontSize: '15px', fontWeight: '500', color: 'var(--mgc-white)', marginTop: '2px' }}>{order.vehicle}</div>
             </div>
             <StatusBadge variant={order.statusVariant}>{order.status}</StatusBadge>
@@ -46,11 +48,11 @@ export default function TrackScreen() {
           <ProgressBar percent={order.percent} />
           <OrderSteps steps={ORDER_STEPS} currentStep={order.step} />
           {order.update && (
-            <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid #222' }}>
-              <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>
+            <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid #1e1e1e' }}>
+              <div style={{ fontSize: '9px', color: '#3a3a3a', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
                 Latest Update · {order.update.time}
               </div>
-              <div style={{ fontSize: '13px', color: 'var(--mgc-tan)', lineHeight: 1.5 }}>
+              <div style={{ fontSize: '13px', color: 'var(--mgc-tan)', lineHeight: 1.6 }}>
                 {order.update.text}
               </div>
             </div>

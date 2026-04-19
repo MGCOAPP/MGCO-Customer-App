@@ -2,50 +2,45 @@ import React from 'react';
 
 const styles = {
   bar: {
-    background: 'var(--mgc-black)',
-    padding: '14px 20px 10px',
+    background: '#0a0a0a',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: '1px solid var(--mgc-black-border)',
+    borderBottom: '1px solid #1e1e1e',
     position: 'sticky',
     top: 0,
     zIndex: 50,
   },
-  logoText: {
+  title: {
     fontFamily: 'var(--font-display)',
-    fontSize: '22px',
     color: 'var(--mgc-coral)',
     letterSpacing: '2px',
   },
-  logoSub: {
+  sub: {
     fontSize: '8px',
-    color: 'var(--mgc-tan)',
+    color: '#4a3a2a',
     letterSpacing: '4px',
     textTransform: 'uppercase',
-    marginTop: '-3px',
+    marginTop: '-2px',
   },
-  rightBtn: {
-    width: '36px',
-    height: '36px',
+  circleBtn: {
+    width: '32px',
+    height: '32px',
     borderRadius: '50%',
-    background: '#2a2a2a',
-    border: 'none',
+    background: 'transparent',
+    border: '1px solid #2a2a2a',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    fontSize: '16px',
+    flexShrink: 0,
   },
   notifDot: {
-    width: '8px',
-    height: '8px',
+    width: '6px',
+    height: '6px',
     background: 'var(--mgc-coral)',
     borderRadius: '50%',
-    position: 'absolute',
-    top: '6px',
-    right: '6px',
   },
 };
 
@@ -56,22 +51,18 @@ export default function TopBar({ title, sub, isHome, notifCount, onBack, isDeskt
       padding: isDesktop ? '16px 28px 14px' : '14px 20px 10px',
     }}>
       <div>
-        <div style={{
-          ...styles.logoText,
-          fontSize: isDesktop ? '26px' : '22px',
-        }}>
+        <div style={{ ...styles.title, fontSize: isDesktop ? '26px' : '22px' }}>
           {title}
         </div>
-        <div style={styles.logoSub}>{sub}</div>
+        <div style={styles.sub}>{sub}</div>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {!isDesktop && !isHome && (
-          <button style={styles.rightBtn} onClick={onBack} aria-label="Back">
-            ✕
+          <button style={styles.circleBtn} onClick={onBack} aria-label="Back">
+            <span style={{ fontSize: '11px', color: '#666' }}>✕</span>
           </button>
         )}
-        <button style={styles.rightBtn} aria-label="Notifications">
-          🔔
+        <button style={styles.circleBtn} aria-label="Notifications">
           {notifCount > 0 && <div style={styles.notifDot} />}
         </button>
       </div>

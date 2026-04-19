@@ -1,14 +1,14 @@
 import React from 'react';
 
 const NAV_ITEMS = [
-  { id: 'home',    icon: '🏠', label: 'Home' },
-  { id: 'gallery', icon: '🖼️', label: 'Wrap Gallery' },
-  { id: 'quote',   icon: '💰', label: 'Get a Quote' },
-  { id: 'track',   icon: '📍', label: 'Order Tracking' },
-  { id: 'appt',    icon: '📅', label: 'Schedule' },
-  { id: 'fleet',   icon: '🚛', label: 'My Fleet' },
-  { id: 'care',    icon: '✨', label: 'Wrap Care' },
-  { id: 'account', icon: '👤', label: 'My Account' },
+  { id: 'home',    label: 'Home' },
+  { id: 'gallery', label: 'Wrap Gallery' },
+  { id: 'quote',   label: 'Get a Quote' },
+  { id: 'track',   label: 'Order Tracking' },
+  { id: 'appt',    label: 'Schedule' },
+  { id: 'fleet',   label: 'My Fleet' },
+  { id: 'care',    label: 'Wrap Care' },
+  { id: 'account', label: 'My Account' },
 ];
 
 export default function Sidebar({ current, navigate }) {
@@ -16,37 +16,20 @@ export default function Sidebar({ current, navigate }) {
     <div style={{
       width: '260px',
       flexShrink: 0,
-      background: '#0f0f0f',
-      borderRight: '1px solid #2a2a2a',
+      background: '#0a0a0a',
+      borderRight: '1px solid #1e1e1e',
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100dvh',
       position: 'sticky',
       top: 0,
     }}>
-      {/* Logo */}
-      <div style={{
-        padding: '20px 16px 16px',
-        borderBottom: '1px solid #2a2a2a',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-        <img
-          src="/logo.png"
-          alt="Madison Graphics Company"
-          style={{
-            width: '100%',
-            maxWidth: '170px',
-            height: 'auto',
-            display: 'block',
-          }}
-        />
+      <div style={{ padding: '28px 24px 24px', borderBottom: '1px solid #1e1e1e' }}>
+        <img src="/logo.png" alt="Madison Graphics" style={{ maxWidth: '160px', display: 'block' }} />
       </div>
 
-      {/* Nav Items */}
-      <nav style={{ flex: 1, padding: '12px 10px' }}>
-        {NAV_ITEMS.map(({ id, icon, label }) => {
+      <nav style={{ flex: 1, padding: '8px 0' }}>
+        {NAV_ITEMS.map(({ id, label }) => {
           const active = current === id;
           return (
             <button
@@ -56,46 +39,29 @@ export default function Sidebar({ current, navigate }) {
                 width: '100%',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
-                padding: '10px 12px',
-                borderRadius: '10px',
+                padding: '12px 24px',
                 border: 'none',
-                background: active ? 'var(--mgc-coral-bg)' : 'transparent',
+                borderLeft: active ? '2px solid #D85A30' : '2px solid transparent',
+                background: 'transparent',
                 cursor: 'pointer',
-                marginBottom: '2px',
                 textAlign: 'left',
               }}
             >
-              <span style={{ fontSize: '18px', width: '22px', textAlign: 'center' }}>{icon}</span>
               <span style={{
                 fontSize: '13px',
                 fontWeight: active ? '600' : '400',
-                color: active ? 'var(--mgc-coral)' : '#888',
+                color: active ? '#D85A30' : '#555',
                 fontFamily: 'var(--font-body)',
+                letterSpacing: '0.3px',
               }}>
                 {label}
               </span>
-              {active && (
-                <div style={{
-                  marginLeft: 'auto',
-                  width: '4px',
-                  height: '4px',
-                  borderRadius: '50%',
-                  background: 'var(--mgc-coral)',
-                }} />
-              )}
             </button>
           );
         })}
       </nav>
 
-      {/* Footer */}
-      <div style={{
-        padding: '16px 20px',
-        borderTop: '1px solid #2a2a2a',
-        fontSize: '11px',
-        color: '#444',
-      }}>
+      <div style={{ padding: '16px 24px', borderTop: '1px solid #1e1e1e', fontSize: '11px', color: '#444' }}>
         <div>608-318-1711</div>
         <div style={{ marginTop: '2px' }}>Sun Prairie, WI</div>
       </div>
