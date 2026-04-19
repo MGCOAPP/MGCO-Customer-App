@@ -14,7 +14,7 @@ const NAV_ITEMS = [
 export default function Sidebar({ current, navigate }) {
   return (
     <div style={{
-      width: '220px',
+      width: '260px',
       flexShrink: 0,
       background: '#0f0f0f',
       borderRight: '1px solid #2a2a2a',
@@ -26,27 +26,22 @@ export default function Sidebar({ current, navigate }) {
     }}>
       {/* Logo */}
       <div style={{
-        padding: '24px 20px 20px',
+        padding: '20px 16px 16px',
         borderBottom: '1px solid #2a2a2a',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}>
-        <div style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '24px',
-          color: 'var(--mgc-coral)',
-          letterSpacing: '2px',
-          lineHeight: 1,
-        }}>
-          Madison<br />Graphics
-        </div>
-        <div style={{
-          fontSize: '8px',
-          color: 'var(--mgc-tan)',
-          letterSpacing: '4px',
-          textTransform: 'uppercase',
-          marginTop: '4px',
-        }}>
-          Company
-        </div>
+        <img
+          src="/logo.png"
+          alt="Madison Graphics Company"
+          style={{
+            width: '100%',
+            maxWidth: '170px',
+            height: 'auto',
+            display: 'block',
+          }}
+        />
       </div>
 
       {/* Nav Items */}

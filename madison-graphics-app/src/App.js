@@ -56,13 +56,9 @@ export default function App() {
     return (
       <div style={{
         display: 'flex',
-        width: '100%',
-        maxWidth: '1100px',
+        width: '100vw',
         minHeight: '100dvh',
-        margin: '0 auto',
         background: '#111',
-        borderLeft: '1px solid #1a1a1a',
-        borderRight: '1px solid #1a1a1a',
       }}>
         <Sidebar current={currentScreen} navigate={setCurrentScreen} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
@@ -75,7 +71,7 @@ export default function App() {
             isDesktop
           />
           <main style={{ flex: 1, overflowY: 'auto', background: '#111' }}>
-            <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+            <div style={{ maxWidth: '960px', padding: '0 24px' }}>
               <ActiveScreen navigate={setCurrentScreen} />
             </div>
           </main>
