@@ -65,29 +65,16 @@ export default function Sidebar({ current, navigate }) {
     }}>
       {/* Logo */}
       <div style={{
-        padding: '28px 24px 22px',
+        padding: '20px 24px 18px',
         borderBottom: '1px solid #1e1e1e',
+        display: 'flex',
+        alignItems: 'center',
       }}>
-        <div style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '22px',
-          color: '#F9F6F2',
-          letterSpacing: '3px',
-          lineHeight: 1,
-        }}>
-          MADISON<br />
-          <span style={{ color: 'var(--mgc-coral)' }}>GRAPHICS</span>
-        </div>
-        <div style={{
-          fontSize: '9px',
-          color: '#444',
-          letterSpacing: '5px',
-          textTransform: 'uppercase',
-          marginTop: '6px',
-          fontFamily: 'var(--font-body)',
-        }}>
-          Company
-        </div>
+        <img
+          src="/logo.png"
+          alt="Madison Graphics Company"
+          style={{ width: '100%', maxWidth: '160px', height: 'auto', display: 'block' }}
+        />
       </div>
 
       {/* Nav Items */}
