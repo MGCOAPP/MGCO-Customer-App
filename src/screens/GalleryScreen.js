@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SectionTitle } from '../components/UI';
 
-const FILTERS = ['All', 'Full Wrap', 'Partial', 'Fleet', 'Bus Wrap', 'Oversize'];
+const FILTERS = ['Full Wrap', 'Partial', 'Fleet', 'Bus Wrap', 'Oversize'];
 
 const GALLERY_ITEMS = [
   // Full Wraps
@@ -80,11 +80,11 @@ const GALLERY_ITEMS = [
 ];
 
 export default function GalleryScreen() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('Full Wrap');
   const [failedSrcs, setFailedSrcs] = useState(new Set());
 
   const visible = GALLERY_ITEMS.filter(item =>
-    (activeFilter === 'All' || item.filter === activeFilter) && !failedSrcs.has(item.src)
+    item.filter === activeFilter && !failedSrcs.has(item.src)
   );
 
   return (
