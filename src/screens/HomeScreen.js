@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SectionTitle, Card, ProgressBar, OrderSteps, StatusBadge } from '../components/UI';
 import Icon from '../components/Icons';
 
@@ -13,6 +13,37 @@ const quickActions = [
   { id: 'care',    icon: 'care',     label: 'Wrap Care',    sub: 'Protect your wrap' },
 ];
 
+function QuickActionsGrid({ navigate }) {
+  const [hovered, setHovered] = useState(null);
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '10px', padding: '4px 20px' }}>
+      {quickActions.map(({ id, icon, label, sub }) => (
+        <div
+          key={id}
+          onClick={() => navigate(id)}
+          onMouseEnter={() => setHovered(id)}
+          onMouseLeave={() => setHovered(null)}
+          style={{
+            background: hovered === id ? 'rgba(216,90,48,0.25)' : 'var(--mgc-black-card)',
+            border: `2px solid ${hovered === id ? '#D85A30' : 'var(--mgc-black-border)'}`,
+            borderRadius: '12px',
+            padding: '16px 14px',
+            cursor: 'pointer',
+            boxShadow: hovered === id ? '0 0 12px rgba(216,90,48,0.5)' : 'none',
+            transition: 'border-color 0.15s, background 0.15s, box-shadow 0.15s',
+          }}
+        >
+          <div style={{ color: 'var(--mgc-coral)', marginBottom: '10px' }}>
+            <Icon name={icon} size={22} />
+          </div>
+          <div style={{ fontSize: '13px', fontWeight: '500', color: 'var(--mgc-white)' }}>{label}</div>
+          <div style={{ fontSize: '11px', color: '#666', marginTop: '2px' }}>{sub}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function HomeScreen({ navigate }) {
   return (
     <div>
@@ -26,8 +57,8 @@ export default function HomeScreen({ navigate }) {
           Welcome back
         </div>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: '32px', color: 'var(--mgc-white)', letterSpacing: '1px', lineHeight: 1 }}>
-          LARGER THAN LIFE<br />GRAPHICS
-        </div>
+          BUILT ON CRAFT.<br />BACKED BY 3M.
+</div>
         <div style={{ fontSize: '13px', color: 'var(--mgc-tan)', marginTop: '6px' }}>
           1320 N Bristol St, Sun Prairie, WI
         </div>
@@ -58,27 +89,8 @@ export default function HomeScreen({ navigate }) {
 
       {/* Quick Actions */}
       <SectionTitle>Quick Actions</SectionTitle>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '10px', padding: '4px 20px' }}>
-        {quickActions.map(({ id, icon, label, sub }) => (
-          <div
-            key={id}
-            onClick={() => navigate(id)}
-            style={{
-              background: 'var(--mgc-black-card)',
-              border: '1px solid var(--mgc-black-border)',
-              borderRadius: '12px',
-              padding: '16px 14px',
-              cursor: 'pointer',
-            }}
-          >
-            <div style={{ color: 'var(--mgc-coral)', marginBottom: '10px' }}>
-              <Icon name={icon} size={22} />
-            </div>
-            <div style={{ fontSize: '13px', fontWeight: '500', color: 'var(--mgc-white)' }}>{label}</div>
-            <div style={{ fontSize: '11px', color: '#666', marginTop: '2px' }}>{sub}</div>
-          </div>
-        ))}
-      </div>
+      <QuickActionsGrid navigate={navigate} />
+
 
       {/* Recent Orders */}
       <SectionTitle>Recent Projects</SectionTitle>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Icon = ({ d, size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -50,6 +50,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Sidebar({ current, navigate }) {
+  const [hovered, setHovered] = useState(null);
   return (
     <div style={{
       width: '240px',
@@ -97,6 +98,8 @@ export default function Sidebar({ current, navigate }) {
             <button
               key={id}
               onClick={() => navigate(id)}
+              onMouseEnter={() => setHovered(id)}
+              onMouseLeave={() => setHovered(null)}
               style={{
                 width: '100%',
                 display: 'flex',
@@ -105,11 +108,11 @@ export default function Sidebar({ current, navigate }) {
                 padding: '10px 12px',
                 borderRadius: '6px',
                 border: 'none',
-                background: active ? 'rgba(216,90,48,0.1)' : 'transparent',
+                background: active ? 'rgba(216,90,48,0.15)' : hovered === id ? 'rgba(216,90,48,0.1)' : 'transparent',
                 cursor: 'pointer',
                 marginBottom: '2px',
                 textAlign: 'left',
-                color: active ? 'var(--mgc-coral)' : '#555',
+                color: active || hovered === id ? 'var(--mgc-coral)' : '#555',
                 transition: 'background 0.15s, color 0.15s',
               }}
             >
@@ -120,7 +123,7 @@ export default function Sidebar({ current, navigate }) {
                 fontSize: '13px',
                 fontFamily: 'var(--font-display)',
                 letterSpacing: '1.5px',
-                color: active ? 'var(--mgc-coral)' : '#777',
+                color: active || hovered === id ? 'var(--mgc-coral)' : '#777',
               }}>
                 {label}
               </span>
